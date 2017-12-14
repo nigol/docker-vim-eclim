@@ -27,6 +27,7 @@ After building, you can just pull the image and run it.
 
 ```
 $ docker run -it --name=vim-eclim \
+             -p 8080:8080
              vim-eclim:latest \
              /sbin/my_init -- su - docker
 ```
