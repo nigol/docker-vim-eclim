@@ -42,7 +42,8 @@ RUN (mkdir /home/docker/.vim/bundle && \
 # Force tmux to use 256 colors to play nicely with vim
 RUN echo 'alias tmux="tmux -2"' >> ~/.profile
 
-# Install Eclipse and eclim                                                                                                 RUN (wget -O /home/docker/eclipse-java-mars-R-linux-gtk-x86_64.tar.gz \             "http://mirror.dkm.cz/eclipse/technology/epp/downloads/release/mars/2/eclipse-jee-mars-2-linux-gtk-x86_64.tar.gz" && \
+# Install Eclipse and eclim                                                                                              
+RUN (wget -O /home/docker/eclipse-java-mars-R-linux-gtk-x86_64.tar.gz \             "http://mirror.dkm.cz/eclipse/technology/epp/downloads/release/mars/2/eclipse-jee-mars-2-linux-gtk-x86_64.tar.gz" && \
      tar xzvf eclipse-java-mars-R-linux-gtk-x86_64.tar.gz -C /home/docker && \
      rm eclipse-java-mars-R-linux-gtk-x86_64.tar.gz && \
      mkdir /home/docker/workspace && \

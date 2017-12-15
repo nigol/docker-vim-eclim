@@ -6,12 +6,12 @@ This container is powered by the following open source software
 products:
 
 - **Vim 7.4**
-- **Eclipse Mars** with **OpenJDK 7**
+- **Eclipse Mars** with **OpenJDK 8**
 - **[eclim](http://eclim.org/)** -- eclim brings Eclipse functionality
   to the Vim editor
 
 [`phusion/baseimage`](https://hub.docker.com/r/phusion/baseimage/) is
-used as the base image, which is built upon Ubuntu 14.04 LTS.
+used as the base image.
 
 
 ## Build the Docker Image
@@ -46,7 +46,7 @@ $ DISPLAY=:1 ./eclipse/eclimd
 ```
 
 You should wait for the following message before connecting from
-Emacs.
+Vim.
 
 ```
 INFO  [org.eclim.eclipse.EclimDaemon] Eclim Server Started on: 127.0.0.1:9091
@@ -115,4 +115,4 @@ For further details about Docker volumes, see the
 
 This Docker images was inspired by the following project:
 
-- https://github.com/tatsuya6502/docker-emacs-eclim
+- https://github.com/snowch/docker-vim-eclim
