@@ -36,15 +36,18 @@ RUN (git config --global user.email "nigol@nigol.cz" && \
 RUN (mkdir /home/docker/.vim && mkdir /home/docker/.vim/bundle && \
     mkdir -p ~/.vim/autoload ~/.vim/bundle && \
     curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim && \
+    cd /home/docker/.vim/bundle && \
+    git clone https://github.com/tpope/vim-fugitive.git && \
+    git clone https://github.com/ctrlpvim/ctrlp.vim.git && \
     git clone https://github.com/nigol/vimrc && \
     cp vimrc/vimrc .vimrc)
 
 # Force tmux to use 256 colors to play nicely with vim
-RUN echo 'alias tmux="tmux -2"' >> ~/.profile
+RUN echo ‘alias tmux=“tmux -2”’ >> ~/.profile
 
 # Install Eclipse                                                                                              
 RUN (wget -O /home/docker/eclipse-java-mars-R-linux-gtk-x86_64.tar.gz \ 
-"http://mirror.dkm.cz/eclipse/technology/epp/downloads/release/mars/2/eclipse-jee-mars-2-linux-gtk-x86_64.tar.gz")
+“http://mirror.dkm.cz/eclipse/technology/epp/downloads/release/mars/2/eclipse-jee-mars-2-linux-gtk-x86_64.tar.gz”)
 RUN (tar xzvf eclipse-java-mars-R-linux-gtk-x86_64.tar.gz -C /home/docker && \
      rm eclipse-java-mars-R-linux-gtk-x86_64.tar.gz)
 RUN (mkdir /home/docker/workspace)
@@ -59,4 +62,4 @@ USER root
 ADD service /etc/service
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-CMD ["/bin/sh"]
+CMD [“/bin/sh”]
