@@ -37,7 +37,7 @@ RUN (mkdir /home/docker/.vim && mkdir /home/docker/.vim/bundle && \
     mkdir -p ~/.vim/autoload ~/.vim/bundle && \
     curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim && \
     git clone https://github.com/nigol/vimrc && \
-    cp vimrc .vimrc)
+    cp vimrc/vimrc .vimrc)
 
 # Force tmux to use 256 colors to play nicely with vim
 RUN echo 'alias tmux="tmux -2"' >> ~/.profile
