@@ -33,7 +33,7 @@ RUN (git config --global user.email "nigol@nigol.cz" && \
   git config --global user.name "Martin Polak")
   
 # Vim configuration
-RUN (mkdir /home/docker/.vim/bundle && \
+RUN (mkdir /home/docker/.vim && mkdir /home/docker/.vim/bundle && \
     mkdir -p ~/.vim/autoload ~/.vim/bundle && \
     curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim && \
     git clone https://github.com/nigol/vimrc && \
@@ -42,16 +42,17 @@ RUN (mkdir /home/docker/.vim/bundle && \
 # Force tmux to use 256 colors to play nicely with vim
 RUN echo 'alias tmux="tmux -2"' >> ~/.profile
 
-# Install Eclipse and eclim                                                                                              
+# Install Eclipse                                                                                              
 RUN (wget -O /home/docker/eclipse-java-mars-R-linux-gtk-x86_64.tar.gz \             "http://mirror.dkm.cz/eclipse/technology/epp/downloads/release/mars/2/eclipse-jee-mars-2-linux-gtk-x86_64.tar.gz" && \
      tar xzvf eclipse-java-mars-R-linux-gtk-x86_64.tar.gz -C /home/docker && \
      rm eclipse-java-mars-R-linux-gtk-x86_64.tar.gz && \
-     mkdir /home/docker/workspace && \
-     cd /home/docker && wget "https://github.com/ervandew/eclim/releases/download/2.7.0/eclim_2.7.0.jar" && \
-     java \
-  -Dvim.files=$HOME/.vim \
-  -Declipse.home=/home/docker/eclipse \
-  -jar eclim_2.7.0.jar install)
+     mkdir /home/docker/workspace)
+
+# Install eclim
+RUN (cd /home/docker && \
+wget -O /home/docker/eclim.jar \ 
+“https://github.com/ervandew/eclim/releases/download/2.7.0/eclim_2.7.0.jar” && \
+     java -Dvim.files=$HOME/.vim -Declipse.home=/home/docker/eclipse -jar eclim.jar install)
 
 USER root
 ADD service /etc/service
