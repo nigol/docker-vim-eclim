@@ -36,11 +36,11 @@ RUN (git config --global user.email "nigol@nigol.cz" && \
 RUN (mkdir /home/docker/.vim && mkdir /home/docker/.vim/bundle && \
     mkdir -p ~/.vim/autoload ~/.vim/bundle && \
     curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim && \
+    git clone https://github.com/nigol/vimrc && \
+    cp vimrc/vimrc .vimrc && \
     cd /home/docker/.vim/bundle && \
     git clone https://github.com/tpope/vim-fugitive.git && \
-    git clone https://github.com/ctrlpvim/ctrlp.vim.git && \
-    git clone https://github.com/nigol/vimrc && \
-    cp vimrc/vimrc .vimrc)
+    git clone https://github.com/ctrlpvim/ctrlp.vim.git)
 
 # Force tmux to use 256 colors to play nicely with vim
 RUN echo ‘alias tmux=“tmux -2”’ >> ~/.profile
