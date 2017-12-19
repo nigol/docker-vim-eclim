@@ -43,9 +43,6 @@ RUN (mkdir /home/docker/.vim && mkdir /home/docker/.vim/bundle && \
     git clone https://github.com/airblade/vim-gitgutter && \
     git clone https://github.com/ctrlpvim/ctrlp.vim.git)
 
-# Force tmux to use 256 colors to play nicely with vim
-RUN echo ‘alias tmux=“tmux -2”’ >> ~/.profile
-
 # Install Eclipse                                                                                              
 RUN (wget -O /home/docker/eclipse-java-mars-R-linux-gtk-x86_64.tar.gz \ 
 http://mirror.dkm.cz/eclipse/technology/epp/downloads/release/mars/2/eclipse-jee-mars-2-linux-gtk-x86_64.tar.gz)
