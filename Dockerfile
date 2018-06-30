@@ -50,9 +50,9 @@ RUN (mkdir /home/docker/.ssh && \
 
 # Install Eclipse                                                                                              
 RUN (wget -O /home/docker/eclipse-java-mars-R-linux-gtk-x86_64.tar.gz \ 
-http://mirror.dkm.cz/eclipse/technology/epp/downloads/release/mars/2/eclipse-jee-mars-2-linux-gtk-x86_64.tar.gz)
-RUN (tar xzvf eclipse-java-mars-R-linux-gtk-x86_64.tar.gz -C /home/docker && \
-     rm eclipse-java-mars-R-linux-gtk-x86_64.tar.gz)
+http://mirror.switch.ch/eclipse/technology/epp/downloads/release/photon/R/eclipse-jee-photon-R-linux-gtk-x86_64.tar.gz)
+RUN (tar xzvf eclipse-jee-photon-R-linux-gtk-x86_64.tar.gz -C /home/docker && \
+     rm eclipse-jee-photon-R-linux-gtk-x86_64.tar.gz)
 RUN (mkdir /home/docker/workspace)
 
 # Install eclim
