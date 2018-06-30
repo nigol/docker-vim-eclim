@@ -49,10 +49,10 @@ RUN (mkdir /home/docker/.ssh && \
     chmod 600 /home/docker/.ssh/id_rsa)
 
 # Install Eclipse                                                                                              
-RUN (wget -O /home/docker/eclipse-java-mars-R-linux-gtk-x86_64.tar.gz \ 
+RUN (wget -O /home/docker/eclipse.tar.gz \ 
 http://mirror.switch.ch/eclipse/technology/epp/downloads/release/photon/R/eclipse-jee-photon-R-linux-gtk-x86_64.tar.gz)
-RUN (tar xzvf eclipse-jee-photon-R-linux-gtk-x86_64.tar.gz -C /home/docker && \
-     rm eclipse-jee-photon-R-linux-gtk-x86_64.tar.gz)
+RUN (tar xzvf eclipse.tar.gz -C /home/docker && \
+     rm eclipse.tar.gz)
 RUN (mkdir /home/docker/workspace)
 
 # Install eclim
