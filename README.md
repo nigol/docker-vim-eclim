@@ -1,4 +1,4 @@
-# docker-vim--eclim
+# docker-vim-eclim
 
 Enterprise Java development in Vim running in a Docker container
 
@@ -6,7 +6,7 @@ This container is powered by the following open source software
 products:
 
 - **Vim 7.4**
-- **Eclipse Mars** with **OpenJDK 8**
+- **Eclipse Oxygen** with **OpenJDK 8**
 - **[eclim](http://eclim.org/)** -- eclim brings Eclipse functionality
   to the Vim editor
 
