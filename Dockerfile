@@ -1,4 +1,4 @@
-FROM phusion/baseimage:0.9.22                                                                      
+FROM phusion/baseimage:0.11                                                                      
 MAINTAINER Martin Polak
 
 ENV HOME /root
@@ -14,8 +14,6 @@ RUN (apt-get update && \
                         libxml2-dev libxslt-dev sqlite3 libsqlite3-dev \
                         vim git byobu wget curl unzip tree exuberant-ctags \
                         build-essential cmake python python-dev gdb)
-
-RUN (apt-get install vim)
 
 # Add a non-root user
 RUN (useradd -m -d /home/docker -s /bin/bash docker && \
@@ -49,16 +47,16 @@ RUN (mkdir /home/docker/.ssh && \
     chmod 600 /home/docker/.ssh/id_rsa)
 
 # Install Eclipse                                                                                              
-RUN (wget -O /home/docker/eclipse.tar.gz \ 
-http://mirror.switch.ch/eclipse/technology/epp/downloads/release/oxygen/R/eclipse-jee-oxygen-R-linux-gtk-x86_64.tar.gz)
-RUN (tar xzvf eclipse.tar.gz -C /home/docker && \
-     rm eclipse.tar.gz)
+RUN (wget -O /home/docker/eclipse.tar \ 
+https://s3-eu-west-1.amazonaws.com/eclipse-nigol/eclipse-jee-oxygen-R-linux-gtk-x86_64.tar)
+RUN (tar xvf eclipse.tar -C /home/docker && \
+     rm eclipse.tar)
 RUN (mkdir /home/docker/workspace)
 
 # Install eclim
 RUN (cd /home/docker && \
 wget -O /home/docker/eclim.jar \ 
-https://github.com/ervandew/eclim/releases/download/2.7.0/eclim_2.7.0.jar && \
+https://s3-eu-west-1.amazonaws.com/eclipse-nigol/eclim_2.7.0.jar && \
      java -Dvim.files=$HOME/.vim -Declipse.home=/home/docker/eclipse -jar eclim.jar install)
 
 USER root
