@@ -38,8 +38,7 @@ RUN (mkdir /home/docker/.vim && mkdir /home/docker/.vim/bundle && \
     cp vimrc/vimrc .vimrc && \
     cd /home/docker/.vim/bundle && \
     git clone https://github.com/tpope/vim-fugitive.git && \
-    git clone https://github.com/airblade/vim-gitgutter && \
-    git clone https://github.com/ctrlpvim/ctrlp.vim.git)
+    git clone https://github.com/airblade/vim-gitgutter)
 
 # Prepare SSH key file
 RUN (mkdir /home/docker/.ssh && \
